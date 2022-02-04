@@ -46,6 +46,7 @@ _global_script_class_icons={
 
 config/name="Svg 2 Png"
 config/description="svg 파일을 드래그 드랍 하면 png로 변환해줍니다"
+run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
 [display]
