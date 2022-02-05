@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://default.tres" type="Theme" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
+[ext_resource path="res://svg2png.gd" type="Script" id=3]
 
-[node name="Main" type="CenterContainer"]
+[node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
@@ -11,19 +12,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="vbox" type="VBoxContainer" parent="."]
+[node name="c" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vbox" type="VBoxContainer" parent="c"]
 margin_left = 70.0
 margin_top = 46.0
 margin_right = 290.0
 margin_bottom = 314.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label" type="Label" parent="vbox"]
+[node name="Label" type="Label" parent="c/vbox"]
 margin_right = 220.0
 margin_bottom = 24.0
 theme = ExtResource( 1 )
 text = "이 자리에 svg 파일을 올려주세요"
 
-[node name="progress" type="RichTextLabel" parent="vbox"]
+[node name="progress" type="RichTextLabel" parent="c/vbox"]
 margin_top = 28.0
 margin_right = 220.0
 margin_bottom = 268.0
@@ -35,8 +47,19 @@ bbcode_text = "작업 기록"
 text = "작업 기록"
 scroll_following = true
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="c"]
 margin_left = 180.0
 margin_top = 180.0
 margin_right = 180.0
 margin_bottom = 180.0
+
+[node name="OptionButton" type="OptionButton" parent="."]
+margin_right = 103.0
+margin_bottom = 34.0
+theme = ExtResource( 1 )
+text = "기능 선택"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="item_selected" from="OptionButton" to="." method="_on_OptionButton_item_selected"]
